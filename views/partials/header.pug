@@ -1,0 +1,212 @@
+// HEADER
+header#header
+  // NAV
+  #nav
+    // Top Nav
+    #nav-top
+      .container
+        // social
+        ul.nav-social
+          li
+            a(href='#')
+              i.fa.fa-facebook
+          li
+            a(href='#')
+              i.fa.fa-twitter
+          li
+            a(href='#')
+              i.fa.fa-google-plus
+          li
+            a(href='#')
+              i.fa.fa-instagram
+        // /social
+        // logo
+        .nav-logo
+          a.logo(href='/')
+            img(src='img/logo.png' alt='')
+        // /logo
+        // search & aside toggle
+        .nav-btns
+          button.aside-btn
+            i.fa.fa-bars
+          button.search-btn
+            i.fa.fa-search
+          #nav-search
+            form
+              input.input(name='search' placeholder='Enter your search...')
+            button.nav-close.search-close
+              span
+        // /search & aside toggle
+    // /Top Nav
+    // Main Nav
+    #nav-bottom
+      .container
+        // nav
+        ul.nav-menu
+          li.has-dropdown
+            a(href='/') Home
+            .dropdown
+              .dropdown-body
+                ul.dropdown-list
+                  li
+                    a(href='category.html') Category page
+                  li
+                    a(href='blog-post.html') Post page
+                  li
+                    a(href='author.html') Author page
+                  li
+                    a(href='about.html') About Us
+                  li
+                    a(href='contact.html') Contacts
+                  li
+                    a(href='blank.html') Regular
+          li.has-dropdown.megamenu
+            a(href='#') Lifestyle
+            .dropdown.tab-dropdown
+              .row
+                .col-md-2
+                  ul.tab-nav
+                    li.active
+                      a(data-toggle='tab' href='#tab1') Lifestyle
+                    li
+                      a(data-toggle='tab' href='#tab2') Fashion
+                    li
+                      a(data-toggle='tab' href='#tab1') Health
+                    li
+                      a(data-toggle='tab' href='#tab2') Travel
+                .col-md-10
+                  .dropdown-body.tab-content
+                    // tab1
+                    #tab1.tab-pane.fade.in.active
+                      .row
+                        // post
+                        .col-md-4
+                          .post.post-sm
+                            a.post-img(href='blog-post.html')
+                              img(src='/img/post-10.jpg' alt='')
+                            .post-body
+                              .post-category
+                                a(href='category.html') Travel
+                              h3.post-title.title-sm
+                                a(href='blog-post.html') Sed ut perspiciatis, unde omnis iste natus error sit
+                              ul.post-meta
+                                li
+                                  a(href='author.html') John Doe
+                                li 20 April 2018
+                        // /post
+                        // post
+                        .col-md-4
+                          .post.post-sm
+                            a.post-img(href='blog-post.html')
+                              img(src='/img/post-13.jpg' alt='')
+                            .post-body
+                              .post-category
+                                a(href='category.html') Travel
+                                a(href='category.html') Lifestyle
+                              h3.post-title.title-sm
+                                a(href='blog-post.html') Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.
+                              ul.post-meta
+                                li
+                                  a(href='author.html') John Doe
+                                li 20 April 2018
+                        // /post
+                        // post
+                        .col-md-4
+                          .post.post-sm
+                            a.post-img(href='blog-post.html')
+                              img(src='/img/post-12.jpg' alt='')
+                            .post-body
+                              .post-category
+                                a(href='category.html') Lifestyle
+                              h3.post-title.title-sm
+                                a(href='blog-post.html') Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.
+                              ul.post-meta
+                                li
+                                  a(href='author.html') John Doe
+                                li 20 April 2018
+                        // /post
+                    // /tab1
+                    // tab2
+                    #tab2.tab-pane.fade.in
+                      .row
+                        // post
+                        .col-md-4
+                          .post.post-sm
+                            a.post-img(href='blog-post.html')
+                              img(src='/img/post-5.jpg' alt='')
+                            .post-body
+                              .post-category
+                                a(href='category.html') Lifestyle
+                              h3.post-title.title-sm
+                                a(href='blog-post.html') Postea senserit id eos, vivendo periculis ei qui
+                              ul.post-meta
+                                li
+                                  a(href='author.html') John Doe
+                                li 20 April 2018
+                        // /post
+                        // post
+                        .col-md-4
+                          .post.post-sm
+                            a.post-img(href='blog-post.html')
+                              img(src='/img/post-8.jpg' alt='')
+                            .post-body
+                              .post-category
+                                a(href='category.html') Fashion
+                                a(href='category.html') Lifestyle
+                              h3.post-title.title-sm
+                                a(href='blog-post.html') Sed ut perspiciatis, unde omnis iste natus error sit
+                              ul.post-meta
+                                li
+                                  a(href='author.html') John Doe
+                                li 20 April 2018
+                        // /post
+                        // post
+                        .col-md-4
+                          .post.post-sm
+                            a.post-img(href='blog-post.html')
+                              img(src='/img/post-9.jpg' alt='')
+                            .post-body
+                              .post-category
+                                a(href='category.html') Lifestyle
+                              h3.post-title.title-sm
+                                a(href='blog-post.html') Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.
+                              ul.post-meta
+                                li
+                                  a(href='author.html') John Doe
+                                li 20 April 2018
+                        // /post
+                    // /tab2
+                    // /tab3 tab4 ..
+          each category in categories
+            li
+              a(href='/category/' + category.id)= category.category_name
+        // /nav
+    // /Main Nav
+    // Aside Nav
+    #nav-aside
+      ul.nav-aside-menu
+        li
+          a(href='/') Home
+        li.has-dropdown
+          a Categories
+          ul.dropdown
+            li
+              a(href='#') Lifestyle
+            li
+              a(href='#') Fashion
+            li
+              a(href='#') Technology
+            li
+              a(href='#') Travel
+            li
+              a(href='#') Health
+        li
+          a(href='about.html') About Us
+        li
+          a(href='contact.html') Contacts
+        li
+          a(href='#') Advertise
+      button.nav-close.nav-aside-close
+        span
+    // /Aside Nav
+  // /NAV

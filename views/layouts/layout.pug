@@ -1,0 +1,121 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    title Callie HTML Template
+    // Google font
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700' rel='stylesheet')
+    // Bootstrap
+    link(type='text/css' rel='stylesheet' href="/css/bootstrap.min.css")
+    // Font Awesome Icon
+    link(rel='stylesheet' href="/css/font-awesome.min.css")
+    // Custom stlylesheet
+    link(type='text/css' rel='stylesheet' href="/css/style.css")
+  body
+  include ../partials/header.pug
+  block banner
+  // SECTION
+  .section
+    // container
+    .container
+      // row
+      .row
+        .col-md-8
+          block content
+        .col-md-4
+          // ad widget
+          .aside-widget.text-center
+            a(href='#' style='display: inline-block;margin: auto;')
+              img.img-responsive(src='/img/ad-3.jpg' alt='')
+          // /ad widget
+          // social widget
+          .aside-widget
+            .section-title
+              h2.title Social Media
+            .social-widget
+              ul
+                li
+                  a.social-facebook(href='#')
+                    i.fa.fa-facebook
+                    span
+                      | 21.2K
+                      br
+                      | Followers
+                li
+                  a.social-twitter(href='#')
+                    i.fa.fa-twitter
+                    span
+                      | 10.2K
+                      br
+                      | Followers
+                li
+                  a.social-google-plus(href='#')
+                    i.fa.fa-google-plus
+                    span
+                      | 5K
+                      br
+                      | Followers
+          // /social widget
+          // category widget
+          .aside-widget
+            .section-title
+              h2.title Categories
+            .category-widget
+              ul
+                li
+                  a(href='#')
+                    | Lifestyle 
+                    span 451
+                li
+                  a(href='#')
+                    | Fashion 
+                    span 230
+                li
+                  a(href='#')
+                    | Technology 
+                    span 40
+                li
+                  a(href='#')
+                    | Travel 
+                    span 38
+                li
+                  a(href='#')
+                    | Health 
+                    span 24
+          // /category widget
+          // newsletter widget
+          .aside-widget
+            .section-title
+              h2.title Newsletter
+            .newsletter-widget
+              form
+                p Nec feugiat nisl pretium fusce id velit ut tortor pretium.
+                input.input(name='newsletter' placeholder='Enter Your Email')
+                button.primary-button Subscribe
+          // /newsletter widget
+          // post widget
+          .aside-widget
+            .section-title
+              h2.title Popular Posts
+            // post
+            each news in hotNews
+              .post.post-widget
+                a.post-img(href=`/news/${news.slug}`)
+                  img(src=news.newspaper_imgae alt='news-img')
+                .post-body
+                  .post-category
+                    a(href=`/category/${news.category_id}`) #{(categories.find(category => category.id === news.category_id)).category_name}
+                  h3.post-title
+                    a(href=`/news/${news.slug}`) #{news.newspaper_title.replace(/(<([^>]+)>)/ig,"")}
+            // /post
+          // /post widget
+
+  include ../partials/footer.pug
+  // jQuery Plugins
+  script(src='/js/jquery.min.js')
+  script(src='/js/bootstrap.min.js')
+  script(src='/js/jquery.stellar.min.js')
+  script(src='/js/main.js')
