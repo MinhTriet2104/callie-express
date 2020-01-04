@@ -3,6 +3,7 @@ const router = express.Router();
 
 const connection = require("../database/db");
 
+// Show
 router.get("/:slug.html", (req, res) => {
   const slug = req.params.slug.split("-");
   const id = slug[slug.length - 1];
