@@ -1,5 +1,29 @@
 extends ../../layouts/layout.pug
 
 block content
-  h1 #{news.newspaper_title}
+  // post share
+  .section-row
+    .post-share
+      a.social-facebook(href='#')
+        i.fa.fa-facebook
+        span Share
+      a.social-twitter(href='#')
+        i.fa.fa-twitter
+        span Tweet
+      a.social-pinterest(href='#')
+        i.fa.fa-pinterest
+        span Pin
+      a(href='#')
+        i.fa.fa-envelope
+        span Email
+  // /post share
+  // post content
+  .section-row
+    h1.post-title #{news.newspaper_title}
+    figure.pull-right
+      img(src=news.newspaper_imgae alt='post-img')
+      figcaption #{news.newspaper_title}
+    div.content !{news.newspaper_content}
+  // /post content
+
   

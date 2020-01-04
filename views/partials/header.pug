@@ -44,7 +44,7 @@ header#header
         // nav
         ul.nav-menu
           li.has-dropdown
-            a(href='/') Home
+            a(href='/') Trang chủ
             .dropdown
               .dropdown-body
                 ul.dropdown-list
@@ -61,122 +61,38 @@ header#header
                   li
                     a(href='blank.html') Regular
           li.has-dropdown.megamenu
-            a(href='#') Lifestyle
+            a(href='#') Danh mục
             .dropdown.tab-dropdown
               .row
                 .col-md-2
                   ul.tab-nav
-                    li.active
-                      a(data-toggle='tab' href='#tab1') Lifestyle
-                    li
-                      a(data-toggle='tab' href='#tab2') Fashion
-                    li
-                      a(data-toggle='tab' href='#tab1') Health
-                    li
-                      a(data-toggle='tab' href='#tab2') Travel
+                    -let i = 1;
+                    -while (i <= categories.length)
+                      li(class= (i === 1 ? 'active' : ''))
+                        a(data-toggle='tab' href=`#tab${i}`) #{categories[i++ - 1].category_name}
                 .col-md-10
                   .dropdown-body.tab-content
                     // tab1
-                    #tab1.tab-pane.fade.in.active
-                      .row
-                        // post
-                        .col-md-4
-                          .post.post-sm
-                            a.post-img(href='blog-post.html')
-                              img(src='/img/post-10.jpg' alt='')
-                            .post-body
-                              .post-category
-                                a(href='category.html') Travel
-                              h3.post-title.title-sm
-                                a(href='blog-post.html') Sed ut perspiciatis, unde omnis iste natus error sit
-                              ul.post-meta
-                                li
-                                  a(href='author.html') John Doe
-                                li 20 April 2018
-                        // /post
-                        // post
-                        .col-md-4
-                          .post.post-sm
-                            a.post-img(href='blog-post.html')
-                              img(src='/img/post-13.jpg' alt='')
-                            .post-body
-                              .post-category
-                                a(href='category.html') Travel
-                                a(href='category.html') Lifestyle
-                              h3.post-title.title-sm
-                                a(href='blog-post.html') Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.
-                              ul.post-meta
-                                li
-                                  a(href='author.html') John Doe
-                                li 20 April 2018
-                        // /post
-                        // post
-                        .col-md-4
-                          .post.post-sm
-                            a.post-img(href='blog-post.html')
-                              img(src='/img/post-12.jpg' alt='')
-                            .post-body
-                              .post-category
-                                a(href='category.html') Lifestyle
-                              h3.post-title.title-sm
-                                a(href='blog-post.html') Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.
-                              ul.post-meta
-                                li
-                                  a(href='author.html') John Doe
-                                li 20 April 2018
-                        // /post
-                    // /tab1
-                    // tab2
-                    #tab2.tab-pane.fade.in
-                      .row
-                        // post
-                        .col-md-4
-                          .post.post-sm
-                            a.post-img(href='blog-post.html')
-                              img(src='/img/post-5.jpg' alt='')
-                            .post-body
-                              .post-category
-                                a(href='category.html') Lifestyle
-                              h3.post-title.title-sm
-                                a(href='blog-post.html') Postea senserit id eos, vivendo periculis ei qui
-                              ul.post-meta
-                                li
-                                  a(href='author.html') John Doe
-                                li 20 April 2018
-                        // /post
-                        // post
-                        .col-md-4
-                          .post.post-sm
-                            a.post-img(href='blog-post.html')
-                              img(src='/img/post-8.jpg' alt='')
-                            .post-body
-                              .post-category
-                                a(href='category.html') Fashion
-                                a(href='category.html') Lifestyle
-                              h3.post-title.title-sm
-                                a(href='blog-post.html') Sed ut perspiciatis, unde omnis iste natus error sit
-                              ul.post-meta
-                                li
-                                  a(href='author.html') John Doe
-                                li 20 April 2018
-                        // /post
-                        // post
-                        .col-md-4
-                          .post.post-sm
-                            a.post-img(href='blog-post.html')
-                              img(src='/img/post-9.jpg' alt='')
-                            .post-body
-                              .post-category
-                                a(href='category.html') Lifestyle
-                              h3.post-title.title-sm
-                                a(href='blog-post.html') Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.
-                              ul.post-meta
-                                li
-                                  a(href='author.html') John Doe
-                                li 20 April 2018
-                        // /post
-                    // /tab2
-                    // /tab3 tab4 ..
+                    -i = 1;
+                    while (i <= categories.length)
+                      div(id=`tab${i}` class="tab-pane fade in" + (i === 1 ? ' active' : ''))
+                        .row
+                          each news in categories[i - 1].newspapers
+                            .col-md-4
+                              .post.post-sm
+                                a.post-img(href=`/news/${news.slug}`)
+                                  img(src=`${news.newspaper_imgae}` alt='post-img')
+                                .post-body
+                                  .post-category
+                                    a(href=`/category/${categories[i - 1].id}`) #{categories[i - 1].category_name}
+                                  h3.post-title.title-sm
+                                    a(href=`/news/${news.slug}`) #{news.newspaper_title}
+                                  ul.post-meta
+                                    li
+                                      a(href='#') #{authors.find(author => author.id === news.author_id).author_name}
+                                    li #{news.newspaper_date.toDateString()}
+                      -i++;
+          // Categories                            
           each category in categories
             li
               a(href='/category/' + category.id)= category.category_name
@@ -190,16 +106,9 @@ header#header
         li.has-dropdown
           a Categories
           ul.dropdown
-            li
-              a(href='#') Lifestyle
-            li
-              a(href='#') Fashion
-            li
-              a(href='#') Technology
-            li
-              a(href='#') Travel
-            li
-              a(href='#') Health
+            each category in categories
+              li
+                a(href='/category/' + category.id)= category.category_name
         li
           a(href='about.html') About Us
         li
