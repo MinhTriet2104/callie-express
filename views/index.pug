@@ -35,7 +35,7 @@ block banner
                   a(href=`/news/${hotNews[i].slug}`) #{hotNews[i].newspaper_title.replace(/(<([^>]+)>)/gi, "")}
                 ul.post-meta
                   li
-                    a(href='author.html') #{authors.find(author => author.id === hotNews[i].author_id).author_name}
+                    a(href='#') #{authors.find(author => author.id === hotNews[i].author_id).author_name}
                   li #{hotNews[i].newspaper_date.toDateString()}
             -i++;
     

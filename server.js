@@ -103,6 +103,7 @@ app.use((req, res, next) => {
 // Router
 const indexRouter = require("./routes/index");
 const newspaperRouter = require("./routes/newspaper");
+const categoryRouter = require("./routes/category");
 
 // PORT
 app.listen(process.env.PORT || 3000, () => console.log("Server Running"));
@@ -110,3 +111,4 @@ app.listen(process.env.PORT || 3000, () => console.log("Server Running"));
 // Routes
 app.use("/", indexRouter);
 app.use("/news", newspaperRouter);
+app.use("/category", categoryRouter);
